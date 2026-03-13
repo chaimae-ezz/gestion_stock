@@ -54,9 +54,10 @@
                                    id="name"
                                    value="{{ old('name') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                                   placeholder="Jean Dupont"
+                                   placeholder="NOM EMPLOYEE"
                                    required>
                             @error('name')
+
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>

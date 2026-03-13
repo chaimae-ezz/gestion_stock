@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Modifier le Produit')
+@section('title', 'Détails du Produit')
 
 @section('content')
     <div class="max-w-6xl mx-auto">
@@ -8,10 +8,10 @@
         <div class="flex justify-between items-center mb-6">
             <div>
                 <h1 class="text-3xl font-bold text-gray-900">
-                    <i class="fas fa-edit text-blue-600 mr-2"></i> Modifier le Produit
+                    <i class="fas fa-eye text-blue-600 mr-2"></i> Détails du Produit
                 </h1>
                 <p class="text-gray-600 mt-1">
-                    Modifiez les informations du produit "{{ $produit->designation }}"
+                    Consultation du produit "{{ $produit->designation }}"
                 </p>
             </div>
             <div class="flex space-x-3">
@@ -22,11 +22,8 @@
             </div>
         </div>
 
-        <!-- Formulaire sans rectangle blanc -->
-        <form action="{{ route('produits.update', $produit) }}" method="POST">
-            @csrf
-            @method('PUT')
-
+        <!-- Formulaire en lecture seule -->
+        <div class="mb-8">
             <!-- Informations de base -->
             <div class="mb-8">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
@@ -37,28 +34,21 @@
                     <!-- Référence -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">
-                            Référence <span class="text-red-500">*</span>
+                            Référence
                         </label>
-                        <input type="text" name="reference"
-                               value="{{ old('reference', $produit->reference) }}"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        @error('reference')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
-                        <p class="text-sm text-gray-500 mt-1">PRD-886</p>
+                        <div class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-700">
+                            {{ $produit->reference }}
+                        </div>
                     </div>
 
                     <!-- Désignation -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">
-                            Désignation <span class="text-red-500">*</span>
+                            Désignation
                         </label>
-                        <input type="text" name="designation"
-                               value="{{ old('designation', $produit->designation) }}"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        @error('designation')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
+                        <div class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-700">
+                            {{ $produit->designation }}
+                        </div>
                     </div>
 
                     <!-- Description (full width) -->
@@ -66,8 +56,9 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">
                             Description
                         </label>
-                        <textarea name="description" rows="3"
-                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('description', $produit->description) }}</textarea>
+                        <div class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-700 min-h-[80px]">
+                            {{ $produit->description ?: 'Aucune description' }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,30 +73,23 @@
                     <!-- Prix -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">
-                            Prix (MAD) <span class="text-red-500">*</span>
+                            Prix (MAD)
                         </label>
                         <div class="relative">
-                            <input type="number" step="0.01" name="prix"
-                                   value="{{ old('prix', $produit->prix) }}"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            <span class="absolute right-3 top-2 text-gray-500">MAD</span>
+                            <div class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-700">
+                                {{ number_format($produit->prix, 2) }} MAD
+                            </div>
                         </div>
-                        @error('prix')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
                     </div>
 
                     <!-- Seuil Alerte -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">
-                            Seuil Alerte <span class="text-red-500">*</span>
+                            Seuil Alerte
                         </label>
-                        <input type="number" name="seuil_alerte"
-                               value="{{ old('seuil_alerte', $produit->seuil_alerte) }}"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        @error('seuil_alerte')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
+                        <div class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-700">
+                            {{ $produit->seuil_alerte }}
+                        </div>
                     </div>
 
                     <!-- Fournisseur -->
@@ -113,23 +97,13 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">
                             Fournisseur
                         </label>
-                        <select name="fournisseur_id"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            <option value="">Sélectionner un fournisseur</option>
-
-                            @if(isset($fournisseurs) && $fournisseurs->count() > 0)
-                                @foreach($fournisseurs as $fournisseur)
-                                    <option value="{{ $fournisseur->id }}"
-                                        {{ old('fournisseur_id', $produit->fournisseur_id) == $fournisseur->id ? 'selected' : '' }}>
-                                        {{ $fournisseur->nom }}
-                                    </option>
-                                @endforeach
+                        <div class="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-700">
+                            @if($produit->fournisseur)
+                                {{ $produit->fournisseur->nom }}
                             @else
-                                <option value="" disabled class="text-gray-400">
-                                    Aucun fournisseur disponible
-                                </option>
+                                <span class="text-gray-400">Aucun fournisseur</span>
                             @endif
-                        </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -137,14 +111,10 @@
             <!-- Boutons d'action -->
             <div class="flex justify-end space-x-3">
                 <a href="{{ route('produits.index') }}"
-                   class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
-                    Annuler
+                   class="px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition">
+                    <i class="fas fa-arrow-left mr-2"></i> Retour à la liste
                 </a>
-                <button type="submit"
-                        class="px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition">
-                    <i class="fas fa-save mr-2"></i> Mettre à jour
-                </button>
             </div>
-        </form>
+        </div>
     </div>
 @endsection

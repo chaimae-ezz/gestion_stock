@@ -69,8 +69,6 @@ class StatistiqueController extends Controller
 
             return $pdf->download('statistiques_' . date('Y-m-d') . '.pdf');
 
-            // Pour afficher dans le navigateur au lieu de télécharger :
-            // return $pdf->stream('statistiques.pdf');
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Erreur lors de l\'export PDF : ' . $e->getMessage());

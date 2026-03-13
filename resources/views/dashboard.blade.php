@@ -33,17 +33,19 @@
                 <!-- Navigation -->
                 <nav class="p-4 space-y-2">
 
+                    <a href="{{ route('fournisseurs.index') }}"
+                       class="flex items-center px-4 py-2 rounded-lg hover:bg-orange-50 hover:text-orange-600 transition group">
+                        <i class="fas fa-truck mr-3 text-gray-500 group-hover:text-orange-500"></i>
+                        <span>Gestion des Fournisseurs</span>
+                    </a>
+
                     <a href="{{ route('produits.index') }}"
                        class="flex items-center px-4 py-2 rounded-lg hover:bg-orange-50 hover:text-orange-600 transition group">
                         <i class="fas fa-box mr-3 text-gray-500 group-hover:text-orange-500"></i>
                         <span>Gestion des Produits</span>
                     </a>
 
-                    <a href="{{ route('fournisseurs.index') }}"
-                       class="flex items-center px-4 py-2 rounded-lg hover:bg-orange-50 hover:text-orange-600 transition group">
-                        <i class="fas fa-truck mr-3 text-gray-500 group-hover:text-orange-500"></i>
-                        <span>Gestion des Fournisseurs</span>
-                    </a>
+
 
                     <a href="{{ route('mouvements.index') }}"
                        class="flex items-center px-4 py-2 rounded-lg hover:bg-orange-50 hover:text-orange-600 transition group">

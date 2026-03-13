@@ -14,7 +14,7 @@ class MouvementStockController extends Controller
 
     public function index(Request $request)
     {
-        // Commencer avec la requête de base
+
         $query = MouvementStock::with(['produit', 'user']);
 
         //  FILTRE RECHERCHE (par produit ou référence)
@@ -36,7 +36,7 @@ class MouvementStockController extends Controller
             $query->whereDate('date_mouvement', $request->date);
         }
 
-        //  FILTRE PAR PÉRIODE (optionnel, si vous voulez ajouter)
+        //  FILTRE PAR PÉRIODE
         if ($request->filled('date_debut')) {
             $query->whereDate('date_mouvement', '>=', $request->date_debut);
         }
@@ -55,9 +55,6 @@ class MouvementStockController extends Controller
             ->paginate(20)
             ->withQueryString(); // Important pour garder les filtres dans la pagination
 
-        // Statistiques (en utilisant la même requête filtrée ou non ?)
-        // Je garde les statistiques sur l'ensemble des données (non filtrées)
-        // pour avoir une vue d'ensemble, mais vous pouvez changer
 
         $totalMouvements = MouvementStock::count();
 
@@ -73,7 +70,7 @@ class MouvementStockController extends Controller
             ->whereNotNull('seuil_alerte')
             ->count();
 
-        // Retourner la vue avec toutes les données
+
         return view('mouvements.index', compact(
             'mouvements',
             'totalMouvements',
@@ -82,9 +79,7 @@ class MouvementStockController extends Controller
             'alertes'
         ));
     }
-    /**
-     * Formulaire création mouvement
-     */
+
     public function create()
     {
         $produits = Produit::orderBy('designation')->get();
@@ -92,9 +87,7 @@ class MouvementStockController extends Controller
         return view('mouvements.create', compact('produits'));
     }
 
-    /**
-     * Enregistrer un mouvement (ENTRÉE / SORTIE / AJUSTEMENT)
-     */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -111,7 +104,7 @@ class MouvementStockController extends Controller
 
                 $produit = Produit::lockForUpdate()->findOrFail($request->produit_id);
 
-                // ✅ CHECK INVENTAIRE MENSUEL
+                // CHECK INVENTAIRE MENSUEL
                 if ($request->type_mouvement === 'inventaire') {
 
                     $alreadyDone = MouvementStock::where('produit_id', $produit->id)
@@ -172,9 +165,7 @@ class MouvementStockController extends Controller
 
             return back()->with('error', $e->getMessage());
         }
-    }    /**
-     * Afficher un mouvement
-     */
+    }
     public function show(MouvementStock $mouvement)
     {
         $mouvement->load(['produit', 'user']);

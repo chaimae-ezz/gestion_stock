@@ -56,9 +56,9 @@
                         <div>
                             <p class="text-gray-500 text-sm">En Alerte</p>
                             <p class="text-2xl font-bold text-red-600">
-                                {{ $produits->filter(fn($p) => $p->quantite_stock <= $p->seuil_alerte)->count() }}
+                                {{-- $produits->filter(fn($p) => $p->quantite_stock <= $p->seuil_alerte)->count()-- }}
                                 {{--  {{ $produits->where('quantite_stock', '<=', 'seuil_alerte')->count() ;--}}
-{{--                                $alertes = \App\Models\Produit::whereColumn('quantite_stock', '<=', 'seuil_alerte')->count();--}}
+                   {{   $alertes = \App\Models\Produit::whereColumn('quantite_stock', '<=', 'seuil_alerte')->count()}}
 
                             </p>
                         </div>

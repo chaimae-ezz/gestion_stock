@@ -72,33 +72,33 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-sm text-gray-500 mb-1">Actifs</p>
-                            <h3 class="text-2xl font-bold text-green-600">{{ $users->total() }}</h3>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center">
-                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">--}}
+{{--                    <div class="flex items-center justify-between">--}}
+{{--                        <div>--}}
+{{--                            <p class="text-sm text-gray-500 mb-1">Actifs</p>--}}
+{{--                            <h3 class="text-2xl font-bold text-green-600">{{ $users->total() }}</h3>--}}
+{{--                        </div>--}}
+{{--                        <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center">--}}
+{{--                            <i class="fas fa-check-circle text-green-500 text-xl"></i>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
 
             <!-- Messages Flash -->
-            @if(session('success'))
-                <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center space-x-3">
-                    <i class="fas fa-check-circle text-green-500"></i>
-                    <span class="text-green-700">{{ session('success') }}</span>
-                </div>
-            @endif
+{{--            @if(session('success'))--}}
+{{--                <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center space-x-3">--}}
+{{--                    <i class="fas fa-check-circle text-green-500"></i>--}}
+{{--                    <span class="text-green-700">{{ session('success') }}</span>--}}
+{{--                </div>--}}
+{{--            @endif--}}
 
-            @if(session('error'))
-                <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center space-x-3">
-                    <i class="fas fa-exclamation-circle text-red-500"></i>
-                    <span class="text-red-700">{{ session('error') }}</span>
-                </div>
-            @endif
+{{--            @if(session('error'))--}}
+{{--                <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center space-x-3">--}}
+{{--                    <i class="fas fa-exclamation-circle text-red-500"></i>--}}
+{{--                    <span class="text-red-700">{{ session('error') }}</span>--}}
+{{--                </div>--}}
+{{--            @endif--}}
 
             <!-- Tableau des utilisateurs -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">

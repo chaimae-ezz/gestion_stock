@@ -20,55 +20,6 @@
             </div>
 
             <!-- Stats -->
-            <div class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3">
-                <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
-                    <div class="px-4 py-5 sm:p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-primary-500 rounded-md p-3">
-                                <i class="fas fa-truck text-white text-xl"></i>
-                            </div>
-                            <div class="ml-5 w-0 flex-1">
-                                <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">Total Fournisseurs</dt>
-                                    <dd class="text-lg font-semibold text-gray-900">{{ $fournisseurs->total() }}</dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
-                    <div class="px-4 py-5 sm:p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
-                                <i class="fas fa-check-circle text-white text-xl"></i>
-                            </div>
-                            <div class="ml-5 w-0 flex-1">
-                                <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">Actifs</dt>
-                                    <dd class="text-lg font-semibold text-gray-900">{{ $fournisseurs->count() }}</dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
-                    <div class="px-4 py-5 sm:p-6">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
-                                <i class="fas fa-chart-line text-white text-xl"></i>
-                            </div>
-                            <div class="ml-5 w-0 flex-1">
-                                <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">Moyenne Produits par fournisseur</dt>
-                                    <dd class="text-lg font-semibold text-gray-900">{{ number_format($fournisseurs->avg('produits_count'), 1) }}</dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Search and Filters -->

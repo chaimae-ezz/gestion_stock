@@ -3,7 +3,9 @@
 @section('title', 'Ajouter un Fournisseur')
 
 @section('content')
+
     <div class="px-4 py-5 sm:px-6 lg:px-8">
+
         <!-- Header -->
         <div class="mb-8">
             <div class="flex items-center">
@@ -133,7 +135,7 @@
                                 </div>
                             </div>
 
-                            <!-- Informations supplémentaires -->
+
 
                         </div>
                     </div>

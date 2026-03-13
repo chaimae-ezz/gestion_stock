@@ -12,7 +12,9 @@ class ProduitController extends Controller
 
     public function index()
     {
-        $produits = Produit::with('fournisseur')->paginate(10);
+        $produits = Produit::with('fournisseur')
+            ->latest()
+            ->paginate(10);
         return view('produits.index', compact('produits'));
     }
 

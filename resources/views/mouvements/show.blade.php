@@ -14,9 +14,9 @@
                     <div>
                         <div class="flex items-center gap-3">
                             <h1 class="text-2xl font-bold text-gray-900">Détail du Mouvement</h1>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-                            #{{ str_pad($mouvement->id, 6, '0', STR_PAD_LEFT) }}
-                        </span>
+{{--                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">--}}
+{{--                            #{{ str_pad($mouvement->id, 6, '0', STR_PAD_LEFT) }}--}}
+{{--                        </span>--}}
                         </div>
                         <p class="mt-1 text-sm text-gray-500">Consultez les informations détaillées de ce mouvement</p>
                     </div>
@@ -110,7 +110,7 @@
                         <div class="ml-5 w-0 flex-1">
                             <dl>
                                 <dt class="text-sm font-medium text-gray-500 truncate">Référence</dt>
-                                <dd class="text-lg font-semibold text-gray-900 font-mono">MVT-{{ str_pad($mouvement->id, 6, '0', STR_PAD_LEFT) }}</dd>
+                                <dd class="text-lg font-semibold text-gray-900 font-mono">{{ $mouvement->produit->reference }}</dd>
                             </dl>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                                     </div>
                                     <div class="bg-gray-50 rounded-lg p-3">
                                         <p class="text-xs text-gray-500">Prix unitaire</p>
-                                        <p class="text-xl font-bold text-gray-900">{{ number_format($mouvement->produit->prix_achat, 2) }} €</p>
+                                        <p class="text-xl font-bold text-gray-900">{{ number_format($mouvement->produit->prix, 2) }} dh</p>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
                         <!-- Variation -->
                         <div class="mt-6 p-4 {{ $mouvement->type_mouvement == 'entree' ? 'bg-green-50' : 'bg-red-50' }} rounded-lg text-center">
                             <p class="text-sm font-medium {{ $mouvement->type_mouvement == 'entree' ? 'text-green-800' : 'text-red-800' }}">
-                                <i class="fas {{ $mouvement->type_mouvement == 'entree' ? 'fa-arrow-down' : 'fa-arrow-up' }} mr-2"></i>
+                                <i class="fas {{ $mouvement->type_mouvement == 'entree' ? 'fa-arrow-up' : 'fa-arrow-down' }} mr-2"></i>
                                 {{ $mouvement->type_mouvement == 'entree' ? 'Augmentation' : 'Diminution' }} du stock
                                 <strong class="mx-1">{{ $mouvement->quantite }}</strong> unités
                             </p>
@@ -267,7 +267,7 @@
                             <div>
                                 <p class="text-lg font-semibold text-gray-900">{{ $mouvement->user->name ?? 'Système' }}</p>
                                 <p class="text-sm text-gray-500">{{ $mouvement->user->email ?? '' }}</p>
-                                <p class="text-xs text-gray-400 mt-1">Opérateur</p>
+                                <p class="text-xs text-gray-400 mt-1">{{ $mouvement->user->role ?? '' }}</p>
                             </div>
                         </div>
                     </div>

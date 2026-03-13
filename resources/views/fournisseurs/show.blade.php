@@ -41,9 +41,9 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                                <i class="fas fa-check-circle mr-2"></i> Actif
-                            </span>
+{{--                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">--}}
+{{--                                <i class="fas fa-check-circle mr-2"></i> Actif--}}
+{{--                            </span>--}}
                                 <span class="text-sm text-gray-500">
                                 Depuis {{ $fournisseur->created_at->diffForHumans() }}
                             </span>
@@ -104,30 +104,7 @@
                                         </div>
                                     @endif
 
-                                    @if($fournisseur->ville || $fournisseur->code_postal)
-                                        <div class="flex items-center space-x-4">
-                                            @if($fournisseur->ville)
-                                                <div>
-                                                    <p class="text-sm font-medium text-gray-900">Ville</p>
-                                                    <p class="text-sm text-gray-600">{{ $fournisseur->ville }}</p>
-                                                </div>
-                                            @endif
 
-                                            @if($fournisseur->code_postal)
-                                                <div>
-                                                    <p class="text-sm font-medium text-gray-900">Code postal</p>
-                                                    <p class="text-sm text-gray-600">{{ $fournisseur->code_postal }}</p>
-                                                </div>
-                                            @endif
-
-                                            @if($fournisseur->pays)
-                                                <div>
-                                                    <p class="text-sm font-medium text-gray-900">Pays</p>
-                                                    <p class="text-sm text-gray-600">{{ $fournisseur->pays }}</p>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
 
@@ -158,13 +135,14 @@
                                 <i class="fas fa-boxes mr-2 text-primary-500"></i> Produits fournis
                             </h3>
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                            {{ $fournisseur->produits_count ?? 0 }} produits
+                            {{ $fournisseur->produits->count() ?? 0 }} produits
+
                         </span>
                         </div>
                     </div>
 
                     <div class="px-4 py-5 sm:p-6">
-                        @if($fournisseur->produits && $fournisseur->produits->count() > 0)
+                        @if($fournisseur->produits && $fournisseur->produits->count()> 0)
                             <div class="overflow-x-auto">
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead>
@@ -186,7 +164,7 @@
                                                 <div class="text-sm text-gray-900">{{ $produit->quantite_stock }}</div>
                                             </td>
                                             <td class="px-3 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">{{ number_format($produit->prix_achat, 2) }} €</div>
+                                                <div class="text-sm text-gray-900">{{ number_format($produit->prix, 2) }} DH</div>
                                             </td>
                                             <td class="px-3 py-4 whitespace-nowrap">
                                                 @if($produit->quantite_stock <= 0)
@@ -242,7 +220,7 @@
                             <div>
                                 <p class="text-sm text-gray-500">Valeur totale du stock</p>
                                 <p class="text-2xl font-semibold text-gray-900">
-                                    {{ number_format($fournisseur->produits->sum('quantite_stock'), 2) }} DH
+                                    {{ number_format($fournisseur->produits->sum('quantite_stock'), 2) }}
                                 </p>
                             </div>
 

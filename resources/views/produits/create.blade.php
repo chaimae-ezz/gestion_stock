@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-
 @section('title', 'Nouveau Produit')
 
 @section('content')
+    <br>
     <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <!-- En-tête -->
@@ -171,23 +171,7 @@
             </form>
         </div>
 
-        <!-- Aide -->
-        <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <i class="fas fa-info-circle text-blue-400 text-xl"></i>
-                </div>
-                <div class="ml-3">
-                    <h3 class="text-sm font-medium text-blue-800">Informations importantes</h3>
-                    <div class="mt-2 text-sm text-blue-700">
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li>La référence doit être unique</li>
-                            <li>Le seuil d'alerte déclenche une notification lorsque le stock est bas</li>
-                            <li>Tous les champs marqués d'un * sont obligatoires</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        <br>
     </div>
 @endsection

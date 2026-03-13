@@ -42,7 +42,7 @@ class AlertController extends Controller
 
 
 
-        return view('produits.alertes', compact('produits', ));
+        return view('produits.alertes', compact('produits' ));
 
     }
 }

@@ -107,15 +107,16 @@
                 </a>
 
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="{{ route('fournisseurs.index') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300">
+                        Fournisseurs
+                    </a>
                     <a href="{{ route('produits.index') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300">
                         Produits
                     </a>
                     <a href="{{ route('mouvements.index') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300">
                         Mouvements
                     </a>
-                    <a href="{{ route('fournisseurs.index') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300">
-                        Fournisseurs
-                    </a>
+
                     <a href="{{ route('statistique') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 hover:border-gray-300">
                         Statistiques
                     </a>

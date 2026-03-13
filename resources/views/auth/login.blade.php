@@ -365,7 +365,6 @@
                 <span>StockMaster</span>
             </a>
             <h1>Bienvenue !</h1>
-{{--            <p>Connectez-vous pour accéder à votre espace</p>--}}
         </div>
 
         <!-- Session Status -->
@@ -454,12 +453,6 @@
             </button>
         </form>
 
-        <!-- Footer -->
-{{--        <div class="login-footer">--}}
-{{--            <p>Pas encore de compte ?--}}
-{{--                <a href="{{ route('register') }}">Créer un compte</a>--}}
-{{--            </p>--}}
-{{--        </div>--}}
     </div>
 </div>
 </body>
